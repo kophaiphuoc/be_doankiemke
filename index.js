@@ -11,6 +11,7 @@ app.use(cors());
 app.use(morgan('common'));
 
 const routerProduct = require('./routers/productRouter')
+const routerAccount = require('./routers/accountRouter')
 
 mongoose.connect(process.env.MONGO_URL)
     .then(() => {
@@ -21,6 +22,7 @@ mongoose.connect(process.env.MONGO_URL)
     });
 
 app.use('/v1',routerProduct)
+app.use('/v1',routerAccount)
 
 app.listen(process.env.PORT || 3000, () => {
     console.log("listen on port " + process.env.PORT)

@@ -73,6 +73,29 @@ const productsService = {
             console.log(error);
             return data
         }
+    },
+    getTypeProductService: async (code) => {
+        try {
+            const request = await productModel.find({ codeTypeProduct: code })
+            if (request) {
+                const data = {
+                    code: 200,
+                    data: request
+                }
+                return data
+            } else {
+                const data = {
+                    code: 500
+                }
+                return data
+            }
+        } catch (error) {
+            const data = {
+                code: 500
+            }
+            console.log(error);
+            return data
+        }
     }
 }
 

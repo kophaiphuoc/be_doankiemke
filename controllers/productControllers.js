@@ -89,6 +89,28 @@ const productController = {
                 mess: e
             })
         })
+    },
+    getTypeProductControllers:(req,res)=>{
+        const code = req.params.code
+        productsService.getTypeProductService(code).then((result)=>{
+            if (result.code != 200) {
+                res.status(500).json({
+                    code: 500,
+                    mess: "Lỗi hệ thống"
+                })
+            } else {
+                res.status(200).json({
+                    code: 200,
+                    mess: result.data
+                })
+            }
+        }).catch((e)=>{
+            console.log(e)
+            res.status(500).json({
+                code: 500,
+                mess: e
+            })
+        })
     }
 }
 
